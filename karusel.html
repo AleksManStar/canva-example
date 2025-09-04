@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoParts Original - Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            margin-right: 20px;
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .language-switcher button.active {
+            color: #0056b3;
+        }
+
+        main {
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-size: 48px;
+        }
+
+        p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+.gallery-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.gallery {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.gallery-controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.gallery-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+
+        /* Позиционирование элементов карусели */
+        .carousel-item:nth-child(1) { transform: rotate(0deg) translate(200px) rotate(0deg); }
+        .carousel-item:nth-child(2) { transform: rotate(60deg) translate(200px) rotate(-60deg); }
+        .carousel-item:nth-child(3) { transform: rotate(120deg) translate(200px) rotate(-120deg); }
+        .carousel-item:nth-child(4) { transform: rotate(180deg) translate(200px) rotate(-180deg); }
+        .carousel-item:nth-child(5) { transform: rotate(240deg) translate(200px) rotate(-240deg); }
+        .carousel-item:nth-child(6) { transform: rotate(300deg) translate(200px) rotate(-300deg); }
+
+        /* CSS-анимация вращения */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" data-lang="home">Главная</a>
+            <a href="#" data-lang="catalog">Каталог</a>
+            <a href="#" data-lang="about">О нас</a>
+            <a href="contacts.html" data-lang="contacts">Контакты</a>
+        </nav>
+        <div class="language-switcher">
+            <button onclick="setLanguage('ru')" class="active">RU</button>
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('de')">DE</button>
+        </div>
+    </header>
+
+<main>
+    <h1 data-lang="title">AutoParts Original</h1>
+    <p data-lang="description">Ваш надёжный поставщик оригинальных запчастей для автомобилей.</p>
+
+    </div>
+</main>
+
+
+    <script>
+        const translations = {
+            'ru': {
+                'home': 'Главная',
+                'catalog': 'Каталог',
+                'about': 'О нас',
+                'contacts': 'Контакты',
+                'title': 'AutoParts Original',
+                'description': 'Ваш надёжный поставщик оригинальных запчастей для автомобилей.'
+            },
+            'en': {
+                'home': 'Home',
+                'catalog': 'Catalog',
+                'about': 'About Us',
+                'contacts': 'Contacts',
+                'title': 'AutoParts Original',
+                'description': 'Your reliable supplier of original car parts.'
+            },
+            'de': {
+                'home': 'Startseite',
+                'catalog': 'Katalog',
+                'about': 'Über uns',
+                'contacts': 'Kontakt',
+                'title': 'AutoParts Original',
+                'description': 'Ihr zuverlässiger Lieferant für Original-Ersatzteile.'
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.language-switcher button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.language-switcher button[onclick="setLanguage('${lang}')"]`).classList.add('active');
+        }
+
+        // Устанавливаем язык по умолчанию
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('ru');
+        });
+        
+    });
+});
+
+    </script>
+
+</body>
+</html>
